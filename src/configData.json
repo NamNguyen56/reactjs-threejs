@@ -1,0 +1,29 @@
+{
+    "office1": {
+        "domeObj": {
+            "imgItems": [
+              {
+                "imageUrl": "./assets/360-image/vr-move-arrow/Arrow_01.png",
+                "position": [-15.5, -15, 45]
+
+              }
+            ],
+            "bgDomeUrl": "./assets/360-image/20211115_152630_546.jpg"
+          }
+    },
+    "office2": {
+        "domeObj": {
+            "imgItems": [
+                {
+                    "imageUrl": "./assets/360-image/vr-move-arrow/Arrow_01.png",
+                    "position": [
+                        -15.5,
+                        -15,
+                        45
+                    ]
+                }
+            ],
+            "bgDomeUrl": "./assets/360-image/20211115_152630_546.jpg"
+        }
+    }
+}
