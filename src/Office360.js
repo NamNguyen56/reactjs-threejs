@@ -11,19 +11,16 @@ import {
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { CanvasRenderer } from "three";
 import { render } from "@testing-library/react";
-import  dataConfig  from "./configData.json";
+import dataConfig from "./configData.json";
 extend({ OrbitControls });
 
 const Office360 = () => {
-
-
   const office1 = {
     domeObj: {
       imgItems: [
         {
           imageUrl: "./assets/360-image/vr-move-arrow/Arrow_01.png",
           position: [-15.5, -15, 45],
-
         },
       ],
       bgDomeUrl: "./assets/360-image/20211115_152630_546.jpg",
@@ -107,37 +104,9 @@ const Office360 = () => {
     },
   };
 
-  const initData = {
-    domeObj: {
-      imgItems: [
-        {
-          imageUrl: "./assets/360-image/vr-move-arrow/Arrow_02.png",
-          position: [-6.5, -4.5, -8],
-          scale: (3, 3, 3),
-          dataItem: office1,
-        },
-        {
-          imageUrl: "./assets/360-image/vr-move-arrow/Arrow_01.png",
-          position: [-25, -15, -45],
-          scale: (8, 8, 8),
 
-          dataItem: office5,
-        },
-        {
-          imageUrl: "./assets/360-image/vr-move-arrow/Arrow_02.png",
-          position: [-15.5, -15, 45],
-          scale: (10, 10, 10),
-
-          dataItem: office3,
-        },
-      ],
-      bgDomeUrl: "./assets/360-image/20211115_152603_078.jpg",
-    },
-  };
-
-  const [inItDataState, setDataState] = useState(
-    initData
-  );
+  const initData = dataConfig.vr_dome_list[0];
+  const [inItDataState, setDataState] = useState(initData);
 
   function Controls(props) {
     const { camera, gl } = useThree();
@@ -151,6 +120,17 @@ const Office360 = () => {
         args={[camera, gl.domElement]}
       />
     );
+  }
+
+  function redirectionControl(arrowControlId) {
+    const domeDataFilter = dataConfig.vr_dome_list.filter(
+      (element) => element["dome_id"] === arrowControlId
+    );
+    if (domeDataFilter.length > 0) {
+      setDataState(domeDataFilter[0]);
+    } else {
+      alert("Something went wrong!!!!!!");
+    }
   }
 
   function ArrowsControl(props) {
@@ -177,7 +157,7 @@ const Office360 = () => {
   function Dome() {
     const texture = useLoader(
       THREE.TextureLoader,
-      inItDataState.domeObj.bgDomeUrl
+      inItDataState.d360_file_name
       // "./assets/360-image/20211115_152603_078.jpg"
     );
 
@@ -205,17 +185,15 @@ const Office360 = () => {
       />
       <Suspense fallback={null}>
         <Dome />
-        {inItDataState.domeObj.imgItems.map((item) => {
+        {inItDataState.vr_object_list.vr_move_arrow_list.map((item) => {
           return (
             <ArrowsControl
               onClick={(e) => {
-                item.dataItem
-                  ? setDataState(item.dataItem)
-                  : alert("bug rồi!!!!!!!!");
+                redirectionControl(item.vr_move_arrow_id);
               }}
-              scale={item.scale}
-              position={item.position}
-              imageUrl={item.imageUrl}
+              scale={item.vr_move_arrow_scale}
+              position={item.vr_move_arrow_position}
+              imageUrl={item.vr_move_arrow_file_name}
             />
           );
         })}

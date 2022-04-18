@@ -1,29 +1,135 @@
 {
-    "office1": {
-        "domeObj": {
-            "imgItems": [
-              {
-                "imageUrl": "./assets/360-image/vr-move-arrow/Arrow_01.png",
-                "position": [-15.5, -15, 45]
-
-              }
-            ],
-            "bgDomeUrl": "./assets/360-image/20211115_152630_546.jpg"
-          }
-    },
-    "office2": {
-        "domeObj": {
-            "imgItems": [
-                {
-                    "imageUrl": "./assets/360-image/vr-move-arrow/Arrow_01.png",
-                    "position": [
-                        -15.5,
-                        -15,
-                        45
-                    ]
-                }
-            ],
-            "bgDomeUrl": "./assets/360-image/20211115_152630_546.jpg"
+    "content_name": "Mirabo-Demo-v2",
+    "vr_dome_list": [
+        {
+            "dome_id": 1,
+            "d360_file_name": "./assets/360-image/20211115_152603_078.jpg",
+            "vr_object_list": {
+                "vr_move_arrow_list": [
+                    {
+                        "vr_move_arrow_id": 2,
+                        "vr_move_arrow_file_name": "./assets/360-image/vr-move-arrow/Arrow_02.png",
+                        "vr_move_arrow_position": [
+                            -6.5,
+                            -4.5,
+                            -8
+                        ],
+                        "vr_move_arrow_scale": 3
+                    },
+                    {
+                        "vr_move_arrow_id": 5,
+                        "vr_move_arrow_file_name": "./assets/360-image/vr-move-arrow/Arrow_01.png",
+                        "vr_move_arrow_position": [
+                            -25,
+                            -15,
+                            -45
+                        ],
+                        "vr_move_arrow_scale": 8
+                    },
+                    {
+                        "vr_move_arrow_id": 3,
+                        "vr_move_arrow_file_name": "./assets/360-image/vr-move-arrow/Arrow_02.png",
+                        "vr_move_arrow_position": [
+                            -15.5,
+                            -15,
+                            45
+                        ],
+                        "vr_move_arrow_scale": 10
+                    }
+                ]
+            }
+        },
+        {
+            "dome_id": 2,
+            "d360_file_name": "./assets/360-image/20211115_152630_546.jpg",
+            "vr_object_list": {
+                "vr_move_arrow_list": [
+                    {
+                        "vr_move_arrow_id": 1,
+                        "vr_move_arrow_file_name": "./assets/360-image/vr-move-arrow/Arrow_01.png",
+                        "vr_move_arrow_position": [
+                            -10,
+                            -10,
+                            -75
+                        ],
+                        "vr_move_arrow_scale": 8
+                    },
+                    {
+                        "vr_move_arrow_id": 4,
+                        "vr_move_arrow_file_name": "./assets/360-image/vr-move-arrow/Arrow_03.png",
+                        "vr_move_arrow_position": [
+                            130,
+                            5,
+                            -40
+                        ],
+                        "vr_move_arrow_scale": 20
+                    }
+                ]
+            }
+        },
+        {
+            "dome_id": 3,
+            "d360_file_name": "./assets/360-image/20211115_152639_597.jpg",
+            "vr_object_list": {
+                "vr_move_arrow_list": [
+                    {
+                        "vr_move_arrow_id": 1,
+                        "vr_move_arrow_file_name": "./assets/360-image/vr-move-arrow/Arrow_01.png",
+                        "vr_move_arrow_position": [
+                            -10,
+                            -15,
+                            40
+                        ],
+                        "vr_move_arrow_scale": 10
+                    },
+                    {
+                        "vr_move_arrow_id": 4,
+                        "vr_move_arrow_file_name": "./assets/360-image/vr-move-arrow/Arrow_01.png",
+                        "vr_move_arrow_position": [
+                            10,
+                            -25,
+                            -40
+                        ],
+                        "vr_move_arrow_scale": 10
+                    }
+                ]
+            }
+        },
+        {
+            "dome_id": 4,
+            "d360_file_name": "./assets/360-image/20211115_152708_994.jpg",
+            "vr_object_list": {
+                "vr_move_arrow_list": [
+                    {
+                        "vr_move_arrow_id": 3,
+                        "vr_move_arrow_file_name": "./assets/360-image/vr-move-arrow/Arrow_01.png",
+                        "vr_move_arrow_position": [
+                            10,
+                            -40,
+                            -40
+                        ],
+                        "vr_move_arrow_scale": 20
+                    }
+                ]
+            }
+        },
+        {
+            "dome_id": 5,
+            "d360_file_name": "./assets/360-image/20220324_175326_398.jpg",
+            "vr_object_list": {
+                "vr_move_arrow_list": [
+                    {
+                        "vr_move_arrow_id": 1,
+                        "vr_move_arrow_file_name": "./assets/360-image/vr-move-arrow/Arrow_01.png",
+                        "vr_move_arrow_position": [
+                            10,
+                            -40,
+                            -40
+                        ],
+                        "vr_move_arrow_scale": 20
+                    }
+                ]
+            }
         }
-    }
+    ]
 }
