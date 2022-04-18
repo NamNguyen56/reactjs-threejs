@@ -8,9 +8,9 @@
                 "vr_move_arrow_list": [
                     {
                         "vr_move_arrow_id": 2,
-                        "vr_move_arrow_file_name": "./assets/360-image/vr-move-arrow/Arrow_02.png",
+                        "vr_move_arrow_file_name": "./assets/360-image/vr-move-arrow/Arrow_03.png",
                         "vr_move_arrow_position": [
-                            -6.5,
+                            6.5,
                             -4.5,
                             -8
                         ],
@@ -20,7 +20,7 @@
                         "vr_move_arrow_id": 5,
                         "vr_move_arrow_file_name": "./assets/360-image/vr-move-arrow/Arrow_01.png",
                         "vr_move_arrow_position": [
-                            -25,
+                            25,
                             -15,
                             -45
                         ],
@@ -28,13 +28,43 @@
                     },
                     {
                         "vr_move_arrow_id": 3,
-                        "vr_move_arrow_file_name": "./assets/360-image/vr-move-arrow/Arrow_02.png",
+                        "vr_move_arrow_file_name": "./assets/360-image/vr-move-arrow/Arrow_03.png",
                         "vr_move_arrow_position": [
-                            -15.5,
+                            15.5,
                             -15,
                             45
                         ],
                         "vr_move_arrow_scale": 10
+                    }
+                ],
+                "vr_image_list": [
+                    {
+                        "vr_image_id": 1,
+                        "vr_image_file_name": "./assets/vr-media/vr-image/BackOffice.png",
+                        "vr_image_position": [5, 0.5, -4],
+                        "vr_image_scale": 1.5
+                    },
+                    {
+                        "vr_image_id": 2,
+                        "vr_image_file_name": "./assets/vr-media/vr-image/Meeting Room.png",
+                        "vr_image_position": [6.5,
+                            2,
+                            -18],
+                        "vr_image_scale": 3
+                    },
+                    {
+                        "vr_image_id": 3,
+                        "vr_image_file_name": "./assets/vr-media/vr-image/BackOffice.png",
+                        "vr_image_position": [ 15.5,
+                            10,
+                            45],
+                        "vr_image_scale":  10
+                    },
+                    {
+                        "vr_image_id": 4,
+                        "vr_image_file_name": "./assets/vr-media/vr-image/Amusement Park.png",
+                        "vr_image_position": [-50, 8, 30],
+                        "vr_image_scale": 10
                     }
                 ]
             }
@@ -48,7 +78,7 @@
                         "vr_move_arrow_id": 1,
                         "vr_move_arrow_file_name": "./assets/360-image/vr-move-arrow/Arrow_01.png",
                         "vr_move_arrow_position": [
-                            -10,
+                            10,
                             -10,
                             -75
                         ],
@@ -56,11 +86,11 @@
                     },
                     {
                         "vr_move_arrow_id": 4,
-                        "vr_move_arrow_file_name": "./assets/360-image/vr-move-arrow/Arrow_03.png",
+                        "vr_move_arrow_file_name": "./assets/360-image/vr-move-arrow/Arrow_01.png",
                         "vr_move_arrow_position": [
-                            130,
-                            5,
-                            -40
+                            -100,
+                            -10,
+                            -20
                         ],
                         "vr_move_arrow_scale": 20
                     }
@@ -76,7 +106,7 @@
                         "vr_move_arrow_id": 1,
                         "vr_move_arrow_file_name": "./assets/360-image/vr-move-arrow/Arrow_01.png",
                         "vr_move_arrow_position": [
-                            -10,
+                            10,
                             -15,
                             40
                         ],
@@ -86,7 +116,7 @@
                         "vr_move_arrow_id": 4,
                         "vr_move_arrow_file_name": "./assets/360-image/vr-move-arrow/Arrow_01.png",
                         "vr_move_arrow_position": [
-                            10,
+                            -10,
                             -25,
                             -40
                         ],
@@ -104,7 +134,7 @@
                         "vr_move_arrow_id": 3,
                         "vr_move_arrow_file_name": "./assets/360-image/vr-move-arrow/Arrow_01.png",
                         "vr_move_arrow_position": [
-                            10,
+                            -10,
                             -40,
                             -40
                         ],
@@ -122,7 +152,7 @@
                         "vr_move_arrow_id": 1,
                         "vr_move_arrow_file_name": "./assets/360-image/vr-move-arrow/Arrow_01.png",
                         "vr_move_arrow_position": [
-                            10,
+                            -10,
                             -40,
                             -40
                         ],

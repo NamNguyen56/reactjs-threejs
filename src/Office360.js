@@ -40,13 +40,12 @@ const Office360 = () => {
     }
   }
 
-  function ArrowsControl(props) {
+  function ImageControlComponent(props) {
     const mesh = useRef();
     const image = useLoader(THREE.TextureLoader, props.imageUrl);
     // useFrame(() => {
     //   mesh.current.rotation.x = mesh.current.rotation.y += 0.01
     // })
-    // const cubesLoader = useLoader(cubes)
     return (
       <mesh {...props} ref={mesh} scale={props.scale}>
         <planeGeometry attach="geometry" args={[1, 1]} />
@@ -68,7 +67,7 @@ const Office360 = () => {
     );
 
     return (
-      <mesh>
+      <mesh scale={[-1, 1, 1]}>
         <sphereBufferGeometry attach="geometry" args={[500, 60, 40]} />
         <meshBasicMaterial
           attach="material"
@@ -80,7 +79,7 @@ const Office360 = () => {
   }
 
   return (
-    <Canvas camera={{ position: [0, 0, 0.1] }}>
+    <Canvas camera={{ position: [-0.1, 0, 0] }}>
       <Controls
         enableZoom={true}
         enablePan={false}
@@ -93,7 +92,7 @@ const Office360 = () => {
         <Dome />
         {inItDataState.vr_object_list.vr_move_arrow_list.map((item) => {
           return (
-            <ArrowsControl
+            <ImageControlComponent
               onClick={(e) => {
                 redirectionControl(item.vr_move_arrow_id);
               }}
@@ -103,6 +102,18 @@ const Office360 = () => {
             />
           );
         })}
+        { inItDataState.vr_object_list.vr_image_list !== undefined ? inItDataState.vr_object_list.vr_image_list.map((item) => {
+          return (
+            <ImageControlComponent
+              // onClick={(e) => {
+              //   redirectionControl(item.vr_image_id);
+              // }}
+              scale={item.vr_image_scale}
+              position={item.vr_image_position}
+              imageUrl={item.vr_image_file_name}
+            />
+          );
+        }) : null }
       </Suspense>
     </Canvas>
   );
