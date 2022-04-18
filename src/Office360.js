@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import ReactDOM from "react-dom";
 import React, { Suspense, useRef, useState } from "react";
 import {
   Canvas,
@@ -9,102 +8,10 @@ import {
   useLoader,
 } from "@react-three/fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { CanvasRenderer } from "three";
-import { render } from "@testing-library/react";
 import dataConfig from "./configData.json";
 extend({ OrbitControls });
 
 const Office360 = () => {
-  const office1 = {
-    domeObj: {
-      imgItems: [
-        {
-          imageUrl: "./assets/360-image/vr-move-arrow/Arrow_01.png",
-          position: [-15.5, -15, 45],
-        },
-      ],
-      bgDomeUrl: "./assets/360-image/20211115_152630_546.jpg",
-    },
-  };
-
-  const office2 = {
-    domeObj: {
-      imgItems: [
-        // {
-        //   imageUrl: "./assets/360-image/vr-move-arrow/Arrow_03.png",
-        //   position: [-6.5, -4.5, -8],
-        //   dataItem: {},
-        // },
-        // {
-        //   imageUrl: "./assets/360-image/vr-move-arrow/Arrow_02.png",
-        //   position: [-15.5, -15, -45],
-        // },
-        {
-          imageUrl: "./assets/360-image/vr-move-arrow/Arrow_01.png",
-          position: [-15.5, -15, 45],
-        },
-      ],
-      bgDomeUrl: "./assets/360-image/20211115_152639_597.jpg",
-    },
-  };
-
-  const office3 = {
-    domeObj: {
-      imgItems: [
-        // {
-        //   imageUrl: "./assets/360-image/vr-move-arrow/Arrow_03.png",
-        //   position: [-6.5, -4.5, -8],
-        //   dataItem: {},
-        // },
-        // {
-        //   imageUrl: "./assets/360-image/vr-move-arrow/Arrow_02.png",
-        //   position: [-15.5, -15, -45],
-        // },
-        {
-          imageUrl: "./assets/360-image/vr-move-arrow/Arrow_01.png",
-          position: [-15.5, -15, 45],
-        },
-      ],
-      bgDomeUrl: "./assets/360-image/20211115_152708_994.jpg",
-    },
-  };
-
-  const office4 = {
-    domeObj: {
-      imgItems: [
-        // {
-        //   imageUrl: "./assets/360-image/vr-move-arrow/Arrow_03.png",
-        //   position: [-6.5, -4.5, -8],
-        //   dataItem: {},
-        // },
-        // {
-        //   imageUrl: "./assets/360-image/vr-move-arrow/Arrow_02.png",
-        //   position: [-15.5, -15, -45],
-        // },
-        {
-          imageUrl: "./assets/360-image/vr-move-arrow/Arrow_01.png",
-          position: [-15.5, -15, 45],
-        },
-      ],
-      bgDomeUrl: "./assets/360-image/20211115_152717_965.jpg",
-    },
-  };
-
-  const office5 = {
-    domeObj: {
-      imgItems: [
-        {
-          imageUrl: "./assets/360-image/vr-move-arrow/Arrow_01.png",
-          position: [-1.5, -40, -40],
-          scale: (20, 20, 20),
-          dataItem: office1,
-        },
-      ],
-      bgDomeUrl: "./assets/360-image/20220324_175326_398.jpg",
-    },
-  };
-
-
   const initData = dataConfig.vr_dome_list[0];
   const [inItDataState, setDataState] = useState(initData);
 
@@ -158,7 +65,6 @@ const Office360 = () => {
     const texture = useLoader(
       THREE.TextureLoader,
       inItDataState.d360_file_name
-      // "./assets/360-image/20211115_152603_078.jpg"
     );
 
     return (
