@@ -122,6 +122,15 @@
                         ],
                         "vr_move_arrow_scale": 10
                     }
+                ],
+                "vr_sound_list": [
+                    {
+                        "vr_sound_id": 1,
+                        "vr_sound_file_name": "./assets/vr-media/vr-sound/bday05.mp3",
+                        "auto_play": true,
+                        "loop_play": true,
+                        "vr_sound_translate": [2.562565, -1.195904, 4.02726]
+                    }
                 ]
             }
         },
@@ -157,6 +166,28 @@
                             -40
                         ],
                         "vr_move_arrow_scale": 20
+                    }
+                ],
+                "vr_video_list": [
+                    {
+                        "vr_video_id": 1,
+                        "vr_video_file_name": "./assets/vr-media/vr-video/Mirabo Halong Team Building 2020.mp4",
+                        "vr_video_transparent_type": 255,
+                        "vr_video_translate":  [
+                            150,
+                            10,
+                            250
+                        ],
+                        "vr_video_scale": 120
+                    }
+                ],
+                "vr_sound_list": [
+                    {
+                        "vr_sound_id": 1,
+                        "vr_sound_file_name": "./assets/vr-media/vr-sound/bday05.mp3",
+                        "auto_play": true,
+                        "loop_play": true,
+                        "vr_sound_translate": "2.562565, -1.195904, 4.02726"
                     }
                 ]
             }

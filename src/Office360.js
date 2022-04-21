@@ -14,7 +14,8 @@ extend({ OrbitControls });
 const Office360 = () => {
   const initData = dataConfig.vr_dome_list[0];
   const [inItDataState, setDataState] = useState(initData);
-
+  const [videoState, setVideoState] = useState(false);
+  const [audioState, setAudioState] = useState(false);
   function Controls(props) {
     const { camera, gl } = useThree();
     const ref = useRef();
@@ -60,6 +61,58 @@ const Office360 = () => {
     );
   }
 
+  function VideoControlComponent(props) {
+    const mesh = useRef();
+    const [video] = useState(() => {
+      const vid = document.createElement("video");
+      vid.src = props.videoUrl;
+      vid.crossOrigin = "Video";
+      vid.muted = false;
+      vid.loop = false;
+      vid.controls = true;
+      vid.load();
+      vid.play();
+      return vid;
+    });
+    return (
+      <mesh {...props} ref={mesh} position={props.position} scale={props.scale}>
+        <planeGeometry attach="geometry" args={[1, 1]} />
+        <meshStandardMaterial emissive={"white"} side={THREE.DoubleSide}>
+          <videoTexture attach="map" args={[video]} />
+          <videoTexture attach="emissiveMap" args={[video]} />
+        </meshStandardMaterial>
+      </mesh>
+    );
+  }
+
+  function AudioControlComponent(props) {
+    const mesh = useRef();
+    var listener = new THREE.AudioListener();
+    var sound = new THREE.Audio(listener);
+    var audioLoader = new THREE.AudioLoader();
+    audioLoader.load(props.audioUrl, function (buffer) {
+      sound.setBuffer(buffer);
+      // sound.setLoop( true );
+      sound.setVolume(0.5);
+
+      if(audioState === true) {
+        sound.play();
+      } else {
+        sound.pause();
+      }
+      
+    }); 
+
+    // return (
+    //   <mesh {...props} ref={mesh} position={props.position} scale={10}>
+    //     <planeGeometry attach="geometry" args={[1, 1]} />
+    //     <meshStandardMaterial emissive={"white"} side={THREE.DoubleSide}>
+    //       <audioLoader attach="map" args={[audio]}></audioLoader>
+    //     </meshStandardMaterial>
+    //   </mesh>
+    // );
+  }
+
   function Dome() {
     const texture = useLoader(
       THREE.TextureLoader,
@@ -102,18 +155,54 @@ const Office360 = () => {
             />
           );
         })}
-        { inItDataState.vr_object_list.vr_image_list !== undefined ? inItDataState.vr_object_list.vr_image_list.map((item) => {
-          return (
-            <ImageControlComponent
-              // onClick={(e) => {
-              //   redirectionControl(item.vr_image_id);
-              // }}
-              scale={item.vr_image_scale}
-              position={item.vr_image_position}
-              imageUrl={item.vr_image_file_name}
-            />
-          );
-        }) : null }
+        {inItDataState.vr_object_list.vr_image_list !== undefined
+          ? inItDataState.vr_object_list.vr_image_list.map((item) => {
+              return (
+                <ImageControlComponent
+                  scale={item.vr_image_scale}
+                  position={item.vr_image_position}
+                  imageUrl={item.vr_image_file_name}
+                />
+              );
+            })
+          : null}
+
+        {inItDataState.vr_object_list.vr_video_list !== undefined
+          ? inItDataState.vr_object_list.vr_video_list.map((item) => {
+              return (
+                <VideoControlComponent
+                  onClick={(e) => {
+                    setVideoState(!videoState);
+                  }}
+                  scale={item.vr_video_scale}
+                  position={item.vr_video_translate}
+                  videoUrl={item.vr_video_file_name}
+                />
+              );
+            })
+          : null}
+
+        {inItDataState.vr_object_list.vr_sound_list !== undefined
+          ? inItDataState.vr_object_list.vr_sound_list.map((item) => {
+              return (
+                <React.Fragment>
+                  <ImageControlComponent
+                    onClick={(e) => {
+                      setAudioState(!audioState);
+                    }}
+                    scale={1}
+                    imageUrl={"./playButton.png"}
+                    position={item.vr_sound_translate}
+                  />
+                    <AudioControlComponent
+                      position={item.vr_sound_translate}
+                      audioUrl={item.vr_sound_file_name}
+
+                    />
+                </React.Fragment>
+              );
+            })
+          : null}
       </Suspense>
     </Canvas>
   );
