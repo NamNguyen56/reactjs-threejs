@@ -1,0 +1,11 @@
+version: "3.2"
+
+services:
+  web-ar-spa-dev:
+    restart: always
+    build: 
+      context: ./
+      dockerfile: Dockerfile.dev
+    hostname: webArSpaDev
+    ports:
+      - '3001:3000'

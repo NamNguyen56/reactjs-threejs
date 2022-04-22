@@ -1,0 +1,11 @@
+version: "3.2"
+
+services:
+  web-ar-spa-prod:
+    restart: always
+    build: 
+      context: ./
+      dockerfile: Dockerfile.prod
+    hostname: webArSpaProd
+    ports:
+      - '3002:80'

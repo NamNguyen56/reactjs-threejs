@@ -13,9 +13,13 @@ extend({ OrbitControls });
 
 const Office360 = () => {
   const initData = dataConfig.vr_dome_list[0];
+  const listener = new THREE.AudioListener();
+  const sound = new THREE.Audio(listener);
   const [inItDataState, setDataState] = useState(initData);
   const [videoState, setVideoState] = useState(false);
-  const [audioState, setAudioState] = useState(false);
+  const [onAudioState, setOnAudioState] = useState(false);
+  const [audioState, setAudioState] = useState(sound);
+  const [currentUuidAudio, setCurrentUuidAudio] = useState(null);
   function Controls(props) {
     const { camera, gl } = useThree();
     const ref = useRef();
@@ -62,16 +66,22 @@ const Office360 = () => {
   }
 
   function VideoControlComponent(props) {
+    
     const mesh = useRef();
-    const [video] = useState(() => {
-      const vid = document.createElement("video");
+    const vid = document.createElement("video");
       vid.src = props.videoUrl;
       vid.crossOrigin = "Video";
       vid.muted = false;
       vid.loop = false;
       vid.controls = true;
       vid.load();
+      if(videoState === true) {
       vid.play();
+    } else {
+      vid.pause();
+    }
+    const [video] = useState(() => {
+      
       return vid;
     });
     return (
@@ -86,22 +96,24 @@ const Office360 = () => {
   }
 
   function AudioControlComponent(props) {
-    const mesh = useRef();
-    var listener = new THREE.AudioListener();
-    var sound = new THREE.Audio(listener);
-    var audioLoader = new THREE.AudioLoader();
-    audioLoader.load(props.audioUrl, function (buffer) {
-      sound.setBuffer(buffer);
-      // sound.setLoop( true );
-      sound.setVolume(0.5);
-
-      if(audioState === true) {
-        sound.play();
-      } else {
-        sound.pause();
-      }
-      
-    }); 
+    // const mesh = useRef();
+    if ((audioState && audioState.uuid !== currentUuidAudio && onAudioState === false) || (audioState && audioState.context.currentTime === 0)) {
+      var listener = new THREE.AudioListener();
+      var sound = new THREE.Audio(listener);
+      var audioLoader = new THREE.AudioLoader();
+      audioLoader.load(props.audioUrl, function (buffer) {
+        sound.setBuffer(buffer);
+        // sound.setLoop( true );
+        sound.setVolume(0.5);
+        setAudioState(sound);
+        setCurrentUuidAudio(sound.uuid)
+        audioState.play();
+      });
+    } else if (audioState !== undefined && onAudioState === true) {
+      audioState.play();
+    } else {
+      audioState.pause();
+    }
 
     // return (
     //   <mesh {...props} ref={mesh} position={props.position} scale={10}>
@@ -188,17 +200,16 @@ const Office360 = () => {
                 <React.Fragment>
                   <ImageControlComponent
                     onClick={(e) => {
-                      setAudioState(!audioState);
+                      setOnAudioState(!onAudioState);
                     }}
                     scale={1}
                     imageUrl={"./playButton.png"}
                     position={item.vr_sound_translate}
                   />
-                    <AudioControlComponent
-                      position={item.vr_sound_translate}
-                      audioUrl={item.vr_sound_file_name}
-
-                    />
+                  <AudioControlComponent
+                    position={item.vr_sound_translate}
+                    audioUrl={item.vr_sound_file_name}
+                  />
                 </React.Fragment>
               );
             })
