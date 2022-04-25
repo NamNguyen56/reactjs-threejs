@@ -8,4 +8,4 @@ services:
       dockerfile: Dockerfile.dev
     hostname: webArSpaDev
     ports:
-      - '3001:3000'
+      - '3000:3000'
