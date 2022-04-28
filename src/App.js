@@ -1,7 +1,8 @@
 import "./App.css";
 import Scene from "./Scene";
 import Office360 from "./Office360";
-import Model3D from "./Model3D";
+// import Model3D from "./Model3D";
+import Model3D from "./components/model3d/Model3D";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {

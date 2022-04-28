@@ -9,7 +9,8 @@ import {
 } from "@react-three/drei";
 import { HexColorPicker } from "react-colorful";
 import { proxy, useSnapshot } from "valtio";
-
+import { Sky, PointerLockControls, Reflector } from "@react-three/drei";
+import { Physics } from "@react-three/cannon";
 // Using a Valtio state model to bridge reactivity between
 // the canvas and the dom, both can write to it and/or react to it.
 const state = proxy({
@@ -132,7 +133,7 @@ function Shoe() {
 }
 
 function ModelFBX() {
-  const fbx = useFBX("./assets/vr-model3d/se-007.fbx");
+  const fbx = useFBX("./assets/vr-model3d/cottage_fbx.fbx");
 
   return (
     <primitive
@@ -146,24 +147,19 @@ function ModelFBX() {
   // const fbxModel = useFBX('./assets/vr-model3d/hr-003.fbx')
 }
 
-function Picker() {
-  const snap = useSnapshot(state);
-  return (
-    <div style={{ display: snap.current ? "block" : "none" }}>
-      <HexColorPicker
-        className="picker"
-        color={snap.items[snap.current]}
-        onChange={(color) => (state.items[snap.current] = color)}
-      />
-      <h1>{snap.current}</h1>
-    </div>
-  );
-}
-
 export default function App() {
   return (
     <>
-      <Canvas shadows camera={{ position: [0, 0, 5], fov: 50 }}>
+      <Canvas
+        shadows
+        camera={{ position: [-0.1, 0, 5], fov: 50 }}
+        raycaster={{
+          computeOffsets: (e) => ({
+            offsetX: e.target.width / 2,
+            offsetY: e.target.height / 2,
+          }),
+        }}
+      >
         <ambientLight intensity={0.7} />
         {/* <spotLight
           intensity={0.5}
@@ -183,11 +179,11 @@ export default function App() {
           enableDamping
           dampingFactor={0.2}
           // autoRotate
-          rotateSpeed={-0.5}
+          rotateSpeed={0.5}
           enablePan={false}
         />
+
       </Canvas>
-      <Picker />
     </>
   );
 }
