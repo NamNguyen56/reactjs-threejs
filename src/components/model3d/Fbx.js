@@ -9,7 +9,7 @@ export const Fbx = props => {
       <primitive
         object={fbx}
         position={[0, 0, 0]}
-        scale={(0.1, 0.1, 0.1)}
+        scale={(0.01, 0.01, 0.01)}
         dispose={null}
       />
     </group>
