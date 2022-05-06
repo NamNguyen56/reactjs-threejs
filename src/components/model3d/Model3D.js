@@ -1,9 +1,9 @@
-import { Canvas } from "@react-three/fiber"
-import { Sky, PointerLockControls, Reflector } from "@react-three/drei"
-import { Physics } from "@react-three/cannon"
-import { Fbx } from "./Fbx"
-import { Player } from "./Player"
-import { Ground } from "./Ground"
+import { Canvas } from "@react-three/fiber";
+import { Sky, PointerLockControls, Reflector } from "@react-three/drei";
+import { Physics } from "@react-three/cannon";
+import { Fbx } from "./Fbx";
+import { Player } from "./Player";
+import { Ground } from "./Ground";
 
 // Controls: WASD + left click
 
@@ -14,13 +14,17 @@ export default function Model3D() {
       gl={{ alpha: false }}
       camera={{ fov: 45 }}
       raycaster={{
-        computeOffsets: (e) => ({ offsetX: e.target.width / 2, offsetY: e.target.height / 2 }),
-      }}>
-      {/* <Sky sunPosition={[100, 20, 100]} /> */}
+        computeOffsets: (e) => ({
+          offsetX: e.target.width / 2,
+          offsetY: e.target.height / 2,
+        }),
+      }}
+    >
+      <Sky sunPosition={[100, 20, 100]} />
       <ambientLight intensity={1} />
       <pointLight castShadow intensity={0.8} position={[100, 100, 100]} />
       <Physics gravity={[0, -30, 0]}>
-          <Fbx />
+        <Fbx />
         <Ground />
         <Player />
         {/* <Reflector
@@ -40,5 +44,5 @@ export default function Model3D() {
       </Physics>
       <PointerLockControls />
     </Canvas>
-  )
+  );
 }

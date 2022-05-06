@@ -179,7 +179,7 @@ const Office360 = () => {
             })
           : null}
 
-        {inItDataState.vr_object_list.vr_video_list !== undefined
+        {/* {inItDataState.vr_object_list.vr_video_list !== undefined
           ? inItDataState.vr_object_list.vr_video_list.map((item) => {
               return (
                 <VideoControlComponent
@@ -192,9 +192,9 @@ const Office360 = () => {
                 />
               );
             })
-          : null}
+          : null} */}
 
-        {inItDataState.vr_object_list.vr_sound_list !== undefined
+        {/* {inItDataState.vr_object_list.vr_sound_list !== undefined
           ? inItDataState.vr_object_list.vr_sound_list.map((item) => {
               return (
                 <React.Fragment>
@@ -213,7 +213,7 @@ const Office360 = () => {
                 </React.Fragment>
               );
             })
-          : null}
+          : null} */}
       </Suspense>
     </Canvas>
   );
